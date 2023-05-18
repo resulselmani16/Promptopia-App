@@ -21,7 +21,6 @@ const Feed = () => {
   const [searchTimeout, setSearchTimeout] = useState(null);
   const [searchedResults, setSearchedResults] = useState([]);
 
-
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await fetch("/api/prompt");
@@ -70,7 +69,14 @@ const Feed = () => {
           className="search_input peer"
         />
       </form>
-      <PromptsCardList data={posts} handleTagClick={handleTagClick} />
+      {searchText ? (
+        <PromptsCardList
+          data={searchedResults}
+          handleTagClick={handleTagClick}
+        />
+      ) : (
+        <PromptsCardList data={posts} handleTagClick={handleTagClick} />
+      )}
     </section>
   );
 };
