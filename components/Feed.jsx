@@ -67,6 +67,9 @@ const Feed = () => {
           onChange={handleSearchChange}
           required
           className="search_input peer"
+          onKeyDown={e => {
+            if (e.key === 'Enter') e.preventDefault();
+          }}
         />
       </form>
       {searchText ? (
